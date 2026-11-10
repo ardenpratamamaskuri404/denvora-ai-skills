@@ -1,0 +1,33 @@
+name: Release
+
+# Push a tag like v0.1.0 to build the .skill file and attach it to a GitHub Release.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate skill
+        run: python scripts/validate-skill.py
+
+      - name: Package skill
+        run: bash scripts/package-skill.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/denvora-ai-skills.skill
+            dist/denvora-ai-skills.zip
+          generate_release_notes: true
