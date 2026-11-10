@@ -1,62 +1,63 @@
 # Verification checklist
 
-Use this before you say "done", "fixed", or "it works".
+Use this checklist before claiming a task is "done", "fixed", or "working".
 
-## The rule
+## The evidence rule
 
-A claim is **[Certain]** only if you have evidence from this session:
+A claim is **[Certain]** (or **[Pasti]**) only when you have direct evidence from this session:
 
-- You ran a command and saw the output, or
-- You read the exact code or doc that proves it.
+- You ran a command and inspected its output, or
+- You read the exact project file or official documentation that proves it.
 
-Otherwise it is **[Likely]** or **[Unsure]**, and you must say so.
+Otherwise, label it **[Likely]** (**[Kemungkinan]**) or **[Unsure]** (**[Belum yakin]**).
 
 ## Before claiming a slice works
 
-- [ ] The code is saved in the right file(s)
-- [ ] Every import/package used is actually installed (checked `package.json`, lock file, `requirements.txt`, etc.)
-- [ ] Every function, method, option, and flag used exists in the installed version
-- [ ] The strongest available check was run (tests, build, type-check, run, lint)
-- [ ] The output was read, not just the exit code (warnings can matter)
-- [ ] Nothing else was broken: related tests or pages still work
+- [ ] Code is saved in the right file(s), following existing project structure
+- [ ] Every imported package is listed in the project's dependency file (`package.json`, `requirements.txt`, `composer.json`, etc.)
+- [ ] Every function, method, prop, and CLI flag exists in the installed version
+- [ ] Unrelated files were **not** modified, moved, or reformatted
+- [ ] No temporary debug logs (`console.log`, `print`, `dd`), scratch scripts, or `.bak` files are left behind
+- [ ] The strongest available check was run (tests, build, type-check, run, or lint) and its output was inspected
+- [ ] Existing tests and build still pass
 
 ## Before claiming a bug is fixed
 
-- [ ] The original error was reproduced first (or the user's exact error was read)
-- [ ] After the change, the same steps no longer produce the error
-- [ ] The root cause is explained, not just the symptom hidden (e.g. not wrapping everything in `try/catch` to silence it)
+- [ ] The original error message and stack trace were read (or reproduced)
+- [ ] After the fix, the steps that triggered the error no longer fail
+- [ ] Any failed fix attempts from earlier hypotheses were reverted cleanly
+- [ ] The root cause is fixed, not silently swallowed with an empty `try/catch`
 
-## When you cannot run anything
+## When you cannot run commands
 
-Some environments do not allow running code. Then:
+Some AI environments (such as web chat windows) cannot execute terminal commands. In that case:
 
-1. Say clearly: "I could not run this here."
-2. Give the exact command(s) to run, in a copyable block.
-3. Say what the user should see if it works, and what to send you if it does not.
+1. State clearly: "I could not run this command in this environment."
+2. Provide the exact command(s) in a copyable code block.
+3. Describe what the user should see if it works, and what error output to share if it fails.
 
 Example:
 
+```text
+[Not verified] I cannot run terminal commands here. Please run:
+
+    npm run build
+
+You should see "Compiled successfully". If an error appears, copy the full message from the terminal and paste it here.
 ```
-I couldn't run this here. Please run:
 
-    npm run dev
+## Common verification commands by stack
 
-Then open http://localhost:3000. You should see the todo list.
-If you see an error, copy the full message from the terminal and send it to me.
-```
+Always check the project's `package.json` / `Makefile` / `README.md` first to see which scripts are configured.
 
-## Common checks by stack
-
-These are typical commands. Always confirm they exist in the project (e.g. check `scripts` in `package.json`) before relying on them.
-
-| Stack | Run | Test | Static check |
+| Stack | Run | Test | Build / Static check |
 |---|---|---|---|
 | Node / React / Next.js | `npm run dev` | `npm test` | `npm run build`, `npx tsc --noEmit`, `npm run lint` |
-| Python | `python main.py` / `uvicorn app.main:app --reload` | `pytest` | `python -m py_compile file.py`, `ruff check .` |
-| Laravel / PHP | `php artisan serve` | `php artisan test` | `php -l file.php` |
-| Flutter | `flutter run` | `flutter test` | `flutter analyze` |
+| Python / FastAPI / Django | `python main.py` / `uvicorn app.main:app --reload` | `pytest` | `python -m py_compile <file>.py`, `ruff check .` |
+| Laravel / PHP | `php artisan serve` | `php artisan test` | `php -l <file>.php` |
+| Flutter / Dart | `flutter run` | `flutter test` | `flutter analyze` |
+| Go | `go run .` | `go test ./...` | `go vet ./...`, `go build ./...` |
 
-## Words to avoid without evidence
+## Phrases to avoid without evidence
 
-"should work", "this will fix it", "everything is done", "fully tested", "production ready".
-Replace them with what you actually checked.
+Do not say: *"should work"*, *"this will fix it"*, *"everything is done"*, *"fully tested"*, or *"production ready"* unless backed by verification output. State specifically what you checked.
