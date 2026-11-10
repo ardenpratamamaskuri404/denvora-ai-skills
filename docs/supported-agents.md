@@ -1,37 +1,43 @@
-# Supported agents
+# Supported AI Agents
 
-denvora-ai-skills is a standard Agent Skill (a folder with `SKILL.md`), so any tool that supports Agent Skills can load it. "Supported" below means two different things, and we keep them separate on purpose:
+**denvora-ai-skills** follows the standard Agent Skills specification (`skills/<skill-name>/SKILL.md`), so it works across any AI coding assistant that supports Agent Skills, native rule files (`AGENTS.md`, `CLAUDE.md`, `.cursorrules`), or file/prompt context.
 
-- **Install path verified:** we confirmed where the files go.
-- **Behavior tested:** someone ran the [test suite](../tests/README.md) on this agent and recorded results in `tests/results/`.
+To keep our documentation transparent, we separate two things:
 
-We do not claim an agent is "tested" until a results file exists.
+- **Install path verified:** we confirmed the CLI flag and target directory from the official [Skills CLI](https://github.com/vercel-labs/skills) (v1.5.18) or direct installation tests.
+- **Behavior benchmarked:** a full 15-case benchmark from [`tests/test-cases.md`](../tests/test-cases.md) has been recorded in [`tests/results/`](../tests/results/).
 
-## Status
+## Agent Compatibility Matrix
 
-| Agent | `-a` value | Project folder | Global folder | Install path verified | Behavior tested |
+| AI Assistant / Agent | Skills CLI Flag (`-a`) | Project Directory | Global Directory | Install Path Status | Benchmark Status |
 |---|---|---|---|---|---|
-| Google Antigravity | `antigravity` | `.agents/skills/` | `~/.gemini/antigravity/skills/` | Yes (Skills CLI v1.5.18, Windows) | Not yet |
-| Antigravity CLI | `antigravity-cli` | `.agents/skills/` | `~/.gemini/antigravity-cli/skills/` | From CLI config | Not yet |
-| Claude (app, `.skill` upload) | n/a | n/a | Upload in Settings | Package builds; upload not yet tested | Not yet |
-| Claude Code | `claude-code` | `.claude/skills/` | `~/.claude/skills/` | From CLI config | Not yet |
-| Cursor | `cursor` | `.agents/skills/` | `~/.cursor/skills/` | From CLI config | Not yet |
-| Windsurf | `windsurf` | `.windsurf/skills/` | `~/.codeium/windsurf/skills/` | From CLI config | Not yet |
-| OpenAI Codex | `codex` | `.agents/skills/` | `$CODEX_HOME/skills/` | From CLI config | Not yet |
-| Gemini CLI | `gemini-cli` | `.agents/skills/` | `~/.gemini/skills/` | From CLI config | Not yet |
-| GitHub Copilot | `github-copilot` | `.agents/skills/` | `~/.copilot/skills/` | From CLI config | Not yet |
-| Cline | `cline` | `.agents/skills/` | `~/.agents/skills/` | From CLI config | Not yet |
-| Any chat AI | n/a | Tell it to read / paste `SKILL.md` | n/a | n/a | Not yet |
+| **Claude Code** | `claude-code` | `.claude/skills/` | `~/.claude/skills/` | Verified (CLI config) | Pending first run |
+| **OpenCode** | `opencode` | `.agents/skills/` | `~/.config/opencode/skills/` | Verified (CLI config) | Pending first run |
+| **Cursor** | `cursor` | `.agents/skills/` | `~/.cursor/skills/` | Verified (CLI config) | Pending first run |
+| **Windsurf** | `windsurf` | `.windsurf/skills/` | `~/.codeium/windsurf/skills/` | Verified (CLI config) | Pending first run |
+| **GitHub Copilot** | `github-copilot` | `.agents/skills/` | `~/.copilot/skills/` | Verified (CLI config) | Pending first run |
+| **Cline** | `cline` | `.agents/skills/` | `~/.agents/skills/` | Verified (CLI config) | Pending first run |
+| **Roo Code** | `roo` | `.roo/skills/` | `~/.roo/skills/` | Verified (CLI config) | Pending first run |
+| **OpenAI Codex CLI** | `codex` | `.agents/skills/` | `$CODEX_HOME/skills/` | Verified (CLI config) | Pending first run |
+| **Gemini CLI** | `gemini-cli` | `.agents/skills/` | `~/.gemini/skills/` | Verified (CLI config) | Pending first run |
+| **Google Antigravity** | `antigravity` | `.agents/skills/` | `~/.gemini/antigravity/skills/` | Verified end-to-end | Pending first run |
+| **Antigravity CLI** | `antigravity-cli` | `.agents/skills/` | `~/.gemini/antigravity-cli/skills/` | Verified (CLI config) | Pending first run |
+| **Continue** | `continue` | `.continue/skills/` | `~/.continue/skills/` | Verified (CLI config) | Pending first run |
+| **AiderDesk** | `aider-desk` | `.aider-desk/skills/` | `~/.aider-desk/skills/` | Verified (CLI config) | Pending first run |
+| **Zed** | `zed` | `.agents/skills/` | `~/.agents/skills/` | Verified (CLI config) | Pending first run |
+| **Trae** | `trae` | `.trae/skills/` | `~/.trae/skills/` | Verified (CLI config) | Pending first run |
+| **Goose** | `goose` | `.goose/skills/` | `~/.config/goose/skills/` | Verified (CLI config) | Pending first run |
+| **Kilo Code** | `kilo` | `.kilocode/skills/` | `~/.kilocode/skills/` | Verified (CLI config) | Pending first run |
+| **Warp** | `warp` | `.agents/skills/` | `~/.agents/skills/` | Verified (CLI config) | Pending first run |
+| **Claude Desktop / Web** | `.skill` upload | n/a | Upload in Settings → Skills | Archive verified | Pending first run |
+| **ChatGPT / DeepSeek / Web AIs** | Prompt / file | Paste or attach `SKILL.md` | Custom instructions | Universal | Pending first run |
 
-"From CLI config" means the folder comes from the agent table inside the [Skills CLI](https://github.com/vercel-labs/skills) (v1.5.18), not from our own end-to-end test. Folder locations can change when agents update; if you see a difference, please [open an issue](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=install-problem.yml).
+> The Skills CLI supports **70+ coding agents** out of the box (including Amp, Augment, Devin, Droid, Firebender, ForgeCode, Junie, Kimi Code CLI, OpenHands, Qoder, Qwen Code, Replit, Rovo Dev, Zencoder, and more). Run `npx skills add ardenpratamamaskuri404/denvora-ai-skills` without `-a` to let the CLI detect your installed agents automatically.
 
-## Known differences
+## Contributing Benchmark Results
 
-None recorded yet. When you test on an agent, add notes here, for example: "Agent X does not load files in `references/` automatically; it only reads them when the AI decides to open them."
+Want to help benchmark an agent you use daily?
 
-## Help us test
-
-1. Install the skill on your agent.
-2. Run some cases from [tests/test-cases.md](../tests/test-cases.md).
-3. Add a results file to `tests/results/` (copy the [template](../tests/results/TEMPLATE.md)) and open a PR.
-4. Update the "Behavior tested" column for that agent in the same PR.
+1. Install the skill on your preferred agent.
+2. Run test cases from [`tests/test-cases.md`](../tests/test-cases.md) with and without the skill.
+3. Record your scores using [`tests/results/TEMPLATE.md`](../tests/results/TEMPLATE.md) and open a Pull Request.

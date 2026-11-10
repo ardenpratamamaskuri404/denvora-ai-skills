@@ -1,88 +1,138 @@
-# Installation guide
+# Installation Guide
 
-Pick **one** method. The Skills CLI (Option A) is the easiest.
+**denvora-ai-skills** is a universal Agent Skill. It works with **Claude Code**, **OpenCode**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Roo Code**, **OpenAI Codex**, **Gemini CLI**, **Google Antigravity**, **Continue**, **AiderDesk**, **Claude Desktop/Web**, and **any chat-based AI** (ChatGPT, DeepSeek, Gemini, etc.).
 
-> **Requirements for Option A:** [Node.js](https://nodejs.org/) 18 or newer (it includes `npx`). Check with `node --version`.
+Choose the installation method that matches your setup.
 
 ---
 
-## Option A: Skills CLI (recommended)
+## Option 1: Skills CLI (Recommended — 70+ Coding Agents)
 
-### Project scope (only this project)
+> **Prerequisite:** [Node.js](https://nodejs.org/) 18 or newer (includes `npx`). Verify with `node --version`.
 
-Run in your project folder:
+### Interactive install (auto-detects your installed AI tools)
+
+Run inside your project folder:
 
 ```bash
+npx skills add ardenpratamamaskuri404/denvora-ai-skills
+```
+
+Or install **globally** so the skill is available in every project on your machine:
+
+```bash
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -g
+```
+
+### Direct install for a specific AI agent
+
+Pass `-a <agent>` for project scope, or add `-g` for global scope:
+
+```bash
+# Claude Code
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a claude-code
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a claude-code -g
+
+# OpenCode
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a opencode
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a opencode -g
+
+# Cursor
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a cursor
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a cursor -g
+
+# Windsurf
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a windsurf
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a windsurf -g
+
+# GitHub Copilot
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a github-copilot
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a github-copilot -g
+
+# Cline / Roo Code
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a cline
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a roo
+
+# OpenAI Codex CLI
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a codex
+
+# Gemini CLI
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a gemini-cli
+
+# Google Antigravity
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a antigravity
-```
-
-This puts the skill in `.agents/skills/denvora-ai-skills/` inside your project. Commit that folder if you want your whole team to use the same rules.
-
-### Global scope (all your projects)
-
-```bash
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a antigravity -g
+
+# Install to ALL detected agents at once
+npx skills add ardenpratamamaskuri404/denvora-ai-skills --all
 ```
 
-This puts the skill in `~/.gemini/antigravity/skills/denvora-ai-skills/`.
+### Useful CLI flags
 
-### Useful flags
-
-| Flag | What it does |
+| Flag | Description |
 |---|---|
-| `-a <agent>` | Which agent to install for. Use `'*'` for every agent the CLI supports. |
-| `-g` | Install globally instead of in the current project |
-| `--copy` | Copy files instead of creating a symlink (useful on Windows or if symlinks cause problems) |
-| `-y` | Skip confirmation prompts |
-| `--list` | Show the skills in the repo without installing |
+| `-a <agent>` | Target a specific agent (`claude-code`, `opencode`, `cursor`, `windsurf`, `antigravity`, etc.) |
+| `-g`, `--global` | Install globally (user-level) instead of only in the current project |
+| `--copy` | Copy files directly instead of creating symlinks (recommended on Windows if symlinks require admin permissions) |
+| `-y`, `--yes` | Skip interactive confirmation prompts |
+| `--list` | List available skills in the repository without installing |
 
-Other agents: replace `antigravity` with `antigravity-cli`, `claude-code`, `cursor`, `windsurf`, `codex`, `gemini-cli`, `github-copilot`, `cline`, and more. See [supported-agents.md](supported-agents.md).
-
-### Update or remove
+### Update or uninstall
 
 ```bash
 npx skills update denvora-ai-skills
 npx skills remove denvora-ai-skills
+npx skills remove denvora-ai-skills -g
 ```
 
 ---
 
-## Option B: Manual copy
+## Option 2: Manual Copy (No Node.js Required)
 
-1. Download this repo (green **Code** button > **Download ZIP**) and unzip it, or `git clone` it.
-2. Copy the folder `skills/denvora-ai-skills` (the whole folder, not just `SKILL.md`) to:
+1. Download this repository (**Code** → **Download ZIP**) and extract it, or clone it with `git clone`.
+2. Copy the folder `skills/denvora-ai-skills` (the entire folder including `SKILL.md` and `references/`) into your agent's skills directory:
 
-   | Scope | Antigravity | Antigravity CLI |
-   |---|---|---|
-   | Project | `<your-project>/.agents/skills/` | `<your-project>/.agents/skills/` |
-   | Global | `~/.gemini/antigravity/skills/` | `~/.gemini/antigravity-cli/skills/` |
+| AI Tool | Project Folder | Global Folder |
+|---|---|---|
+| **Claude Code** | `.claude/skills/denvora-ai-skills/` | `~/.claude/skills/denvora-ai-skills/` |
+| **OpenCode** | `.agents/skills/denvora-ai-skills/` | `~/.config/opencode/skills/denvora-ai-skills/` |
+| **Cursor** | `.agents/skills/denvora-ai-skills/` | `~/.cursor/skills/denvora-ai-skills/` |
+| **Windsurf** | `.windsurf/skills/denvora-ai-skills/` | `~/.codeium/windsurf/skills/denvora-ai-skills/` |
+| **GitHub Copilot** | `.agents/skills/denvora-ai-skills/` | `~/.copilot/skills/denvora-ai-skills/` |
+| **Cline** | `.agents/skills/denvora-ai-skills/` | `~/.agents/skills/denvora-ai-skills/` |
+| **Roo Code** | `.roo/skills/denvora-ai-skills/` | `~/.roo/skills/denvora-ai-skills/` |
+| **OpenAI Codex** | `.agents/skills/denvora-ai-skills/` | `~/.codex/skills/denvora-ai-skills/` |
+| **Gemini CLI** | `.agents/skills/denvora-ai-skills/` | `~/.gemini/skills/denvora-ai-skills/` |
+| **Google Antigravity** | `.agents/skills/denvora-ai-skills/` | `~/.gemini/antigravity/skills/denvora-ai-skills/` |
+| **Continue** | `.continue/skills/denvora-ai-skills/` | `~/.continue/skills/denvora-ai-skills/` |
+| **AiderDesk** | `.aider-desk/skills/denvora-ai-skills/` | `~/.aider-desk/skills/denvora-ai-skills/` |
 
-   `~` means your home folder: `C:\Users\<you>` on Windows, `/Users/<you>` on macOS, `/home/<you>` on Linux.
+*(Note: `~` refers to your home directory: `C:\Users\<username>` on Windows, `/Users/<username>` on macOS, `/home/<username>` on Linux.)*
 
-3. The result should look like:
-
-   ```
-   .agents/
-     skills/
-       denvora-ai-skills/
-         SKILL.md
-         references/
-   ```
-
-4. **Start a new agent session** (new conversation). Agents scan for skills when a session starts.
-
-> [!NOTE]
-> Some older Antigravity versions and guides use `.agent/skills/` (no "s"). If the skill is not detected in `.agents/skills/`, check your agent's docs for the folder it scans.
+3. Start a **new session / conversation** in your AI tool so it loads the newly added skill.
 
 ---
 
-## Option C: Claude (upload a `.skill` file)
+## Option 3: Native Rules Files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`)
 
-1. Go to the [Releases page](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases) and download `denvora-ai-skills.skill` (or `.zip`) from the latest release.
-2. In Claude, open **Settings** and find the **Skills** section (in some versions it is under **Capabilities**), then upload the file.
-3. Make sure the skill is turned on, then start a new chat.
+If your workflow uses project rule files such as `AGENTS.md` (OpenCode, Codex, Cursor, Zed), `CLAUDE.md` (Claude Code), `.cursorrules`, `.windsurfrules`, or `.github/copilot-instructions.md`:
 
-To build the file yourself instead of downloading it:
+1. Copy the `skills/denvora-ai-skills` folder into `.agents/skills/denvora-ai-skills/` (or anywhere in your project).
+2. Add this single pointer to your `AGENTS.md`, `CLAUDE.md`, or rules file:
+
+```markdown
+Always read and follow `.agents/skills/denvora-ai-skills/SKILL.md` (and its linked files in `references/` when relevant) for all coding, debugging, and verification tasks.
+```
+
+---
+
+## Option 4: Claude Desktop & Web (`.skill` Upload)
+
+1. Go to the [Releases page](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases) and download `denvora-ai-skills.skill` (or `denvora-ai-skills.zip`).
+2. Open Claude → **Settings** → **Skills** (or **Capabilities**), and upload the file.
+3. Enable the skill and start a new conversation.
+
+Want to build the `.skill` archive yourself from source?
 
 ```bash
 # macOS / Linux
@@ -92,45 +142,48 @@ To build the file yourself instead of downloading it:
 powershell -ExecutionPolicy Bypass -File .\scripts\package-skill.ps1
 ```
 
-The file appears in `dist/`.
+---
+
+## Option 5: Any Chat AI (ChatGPT, DeepSeek, Gemini Web, Bolt, Lovable, v0)
+
+If you use a browser chat or app builder that does not have a skills directory:
+
+- **If the AI can read files in your workspace:** drop `skills/denvora-ai-skills/` into your project and send:
+  ```text
+  Read skills/denvora-ai-skills/SKILL.md and follow its rules for this entire session.
+  ```
+- **If using a plain chat window:** copy the contents of [`skills/denvora-ai-skills/SKILL.md`](../skills/denvora-ai-skills/SKILL.md) into your custom instructions or paste it at the start of the conversation.
+
+See [prompt-templates.md](prompt-templates.md) for ready-to-copy prompts in English and Indonesian.
 
 ---
 
-## Option D: Any other AI (no skill support)
+## Keeping Your Project Clean (Git Hygiene)
 
-If your AI tool does not support skills (for example a plain chat window), you can still use the rules:
-
-- **If the AI can read files in your project:** copy the `skills/denvora-ai-skills` folder into your project and tell it:
-
-  ```
-  Read skills/denvora-ai-skills/SKILL.md and follow it for this whole conversation.
-  ```
-
-- **If it cannot read files:** paste the contents of `SKILL.md` at the start of the chat, then ask your question.
-
-More ready-to-copy prompts: [prompt-templates.md](prompt-templates.md).
+- **Want your whole team to share these AI rules?** Install at project scope and commit `.agents/skills/` (or `.claude/skills/`).
+- **Working on a personal or client repo where you don't want extra files committed?** Either:
+  1. Install **globally** with `-g` (`npx skills add ardenpratamamaskuri404/denvora-ai-skills -g`), which puts nothing inside your project folder, OR
+  2. Add `.agents/` and `skills-lock.json` to your `.git/info/exclude` or `.gitignore`.
 
 ---
 
-## Check that it works
+## Verify It Works
 
-1. Start a **new** agent session.
-2. Ask something like: `Fix this error: TypeError: Cannot read properties of undefined`.
-3. Signs the skill is active:
-   - The AI asks for or reads the actual code before changing it.
-   - It uses labels like **[Certain] / [Likely] / [Unsure]** (or **[Pasti] / [Kemungkinan] / [Belum yakin]**).
-   - It ends with a short report: what it did, what it verified, what it did not.
-
-If none of this happens, see [Troubleshooting](#troubleshooting).
+1. Start a **new** conversation in your AI tool.
+2. Ask a normal coding question, e.g. *"Fix this error: TypeError: Cannot read properties of undefined"*.
+3. You should see the AI:
+   - Read or ask for the relevant file before editing anything.
+   - Tag key claims with **[Certain] / [Likely] / [Unsure]** (or **[Pasti] / [Kemungkinan] / [Belum yakin]**).
+   - End with a concise verification report showing what was tested and what was not.
 
 ---
 
 ## Troubleshooting
 
-| Problem | Try this |
+| Issue | Solution |
 |---|---|
-| `npx: command not found` | Install Node.js 18+ from [nodejs.org](https://nodejs.org/), then reopen the terminal |
-| Skill installed but AI ignores it | Start a **new** session. Check the folder contains `SKILL.md` directly inside `denvora-ai-skills/`. You can also say: "Use the denvora-ai-skills skill." |
-| Installed in the wrong place | Run `npx skills list` to see where skills are installed |
-| Symlink errors on Windows | Re-run with `--copy` |
-| Still stuck | [Open an install issue](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=install-problem.yml) with the command and full output |
+| `npx: command not found` | Install Node.js 18+ from [nodejs.org](https://nodejs.org/) and restart your terminal, or use **Option 2 (Manual Copy)** |
+| Skill is installed but AI ignores it | Start a **new** chat session. You can also explicitly tell the agent: *"Use the denvora-ai-skills skill."* |
+| Symlink permission error on Windows | Add `--copy` to the install command: `npx skills add ardenpratamamaskuri404/denvora-ai-skills --copy` |
+| Want to check where skills are installed | Run `npx skills list` (or `npx skills list -g` for global skills) |
+| Still having trouble? | [Open an installation issue](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=install-problem.yml) |
