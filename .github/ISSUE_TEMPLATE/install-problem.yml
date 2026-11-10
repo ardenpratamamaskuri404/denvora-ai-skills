@@ -1,0 +1,43 @@
+name: Install problem
+description: The skill does not install, or the agent does not see it.
+title: "[Install] "
+labels: ["install", "needs-triage"]
+body:
+  - type: dropdown
+    id: method
+    attributes:
+      label: Install method
+      options:
+        - npx skills add (project)
+        - npx skills add (global, -g)
+        - Manual copy
+        - .skill upload (Claude)
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and version
+      placeholder: "Antigravity vX.Y"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Windows 11 / macOS 15 / Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you ran and what happened
+      description: Paste the exact command and the full output or error.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Where are the files now?
+      description: If you know, the folder where SKILL.md ended up.

@@ -1,0 +1,71 @@
+name: "AI still hallucinated / AI masih ngawang"
+description: The AI invented something, skipped verification, or claimed "done" when it wasn't, even with the skill installed.
+title: "[Hallucination] "
+labels: ["hallucination-report", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Real cases like this are the main way the skill gets better.
+        Terima kasih! Kasus nyata seperti ini yang paling membantu skill ini makin bagus.
+        You can write in English or Indonesian.
+        **Please remove API keys, passwords, and private code before posting.**
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and model
+      description: Which tool and AI model were you using?
+      placeholder: "Antigravity + Gemini ..., Claude app + Claude ..."
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      description: Release tag or commit, if you know it.
+      placeholder: "v0.1.0"
+  - type: dropdown
+    id: category
+    attributes:
+      label: What went wrong?
+      multiple: true
+      options:
+        - Invented a function / library / flag / version
+        - Edited code without reading it first
+        - Wrote too much code at once
+        - Said "done / fixed / works" without checking
+        - Guessed repeatedly instead of debugging
+        - Asked too many questions / too slow for a small task
+        - Replied in the wrong language or too technical
+        - The skill did not seem to trigger
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Your prompt
+      description: What you asked the AI, as exactly as possible.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What the AI did
+      description: Paste the relevant part of the response, or describe it. Screenshots welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What should a careful, honest AI have done instead?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Project context (optional)
+      description: Language, framework, versions, OS.
+      placeholder: "Next.js 15, Node 22, Windows 11"

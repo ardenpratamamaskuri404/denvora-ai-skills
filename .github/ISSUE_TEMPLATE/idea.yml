@@ -1,0 +1,24 @@
+name: Idea or improvement
+description: Suggest a new rule, reference, stack guide, or other improvement.
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Ideally a real situation where the AI behaved badly.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Your proposal
+      description: The rule, example, or change you have in mind.
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Could this make the AI worse anywhere?
+      description: For example slower on small tasks, more questions, longer replies.
