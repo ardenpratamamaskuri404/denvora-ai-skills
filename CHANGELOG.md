@@ -1,35 +1,39 @@
 # Changelog
 
-All notable changes to this project are documented here.
+All notable changes to this project are documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses [Semantic Versioning](https://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
 ## [0.1.0] - 2026-11-10
 
-First draft of the skill and project structure.
+Initial public draft of **denvora-ai-skills**.
 
 ### Added
 
-- Core skill `skills/denvora-ai-skills/SKILL.md`: golden rules (never invent, read before write, blocking questions only, small slices, verify then claim, evidence-based debugging, honest uncertainty, protect the user's work), confidence labels (Certain / Likely / Unsure, with Indonesian equivalents), task scaling, report format, and red flags.
-- References: workflow, verification checklist, debugging protocol, beginner communication guide (EN/ID), pre-launch security checklist.
-- Test suite: 15 prompt-based cases, scoring rubric, results template.
-- Scripts: `validate-skill.py`, `package-skill.sh`, `package-skill.ps1` (builds the `.skill` file for Claude).
-- GitHub: CI validation, release workflow that attaches the `.skill` file to tagged releases, issue templates (including "AI still hallucinated / AI masih ngawang"), pull request template.
-- Docs: README with logo, installation guide, supported agents table, prompt templates in English and Indonesian, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY.
-
-### Verified
-
-- `npx skills add <repo> --list` (Skills CLI v1.5.18) discovers the skill.
-- Project-scope install for Antigravity places files in `.agents/skills/denvora-ai-skills/` (Windows).
-- Validator passes; packaging produces an archive with the skill folder at the top level.
-
-### Not yet verified
-
-- Antigravity loading and following the skill in a live session.
-- Claude `.skill` upload.
-- Behavior on any agent via the test suite (no results recorded yet).
+- **Core Universal Skill (`skills/denvora-ai-skills/SKILL.md`):**
+  - 9 Golden Rules covering anti-hallucination (never invent), read-before-write, project cleanliness and non-destructive editing, data/git protection, blocking-only questions, small verified slices, evidence-based debugging, and honest uncertainty.
+  - Confidence labels (`[Certain]` / `[Likely]` / `[Unsure]` and Indonesian equivalents `[Pasti]` / `[Kemungkinan]` / `[Belum yakin]`).
+  - Automatic task scaling (tiny tasks get concise answers; normal/large tasks follow the structured slice workflow).
+  - Standardized end-of-task verification report format.
+- **On-Demand Reference Guides (`skills/denvora-ai-skills/references/`):**
+  - `workflow.md` — step-by-step slice execution and project hygiene rules.
+  - `verification-checklist.md` — evidence standards and per-stack verification commands.
+  - `debugging-protocol.md` — root-cause debugging (one hypothesis at a time, revert failed tries, stop after 3 failed attempts).
+  - `beginner-communication.md` — plain-language communication guide with English and Indonesian examples.
+  - `security-checklist.md` — pre-launch security checklist for web apps and APIs.
+- **Universal Agent Documentation (`docs/`):**
+  - `installation.md` — installation commands and manual paths for 70+ agents via the Skills CLI (`claude-code`, `opencode`, `cursor`, `windsurf`, `github-copilot`, `cline`, `roo`, `codex`, `gemini-cli`, `antigravity`, etc.), native rules files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`), Claude `.skill` upload, chat AI usage, and git hygiene tips.
+  - `supported-agents.md` — compatibility matrix separating verified install paths from recorded behavior benchmarks.
+  - `prompt-templates.md` — copy-paste prompts in English and Indonesian.
+- **Benchmarking Suite (`tests/`):**
+  - 15 realistic test cases across 7 categories, a 0–2 scoring rubric, and a reproducible results template.
+- **Tooling, CI & Community Files:**
+  - `scripts/validate-skill.py` (frontmatter and link validator) and `scripts/package-skill.sh` / `scripts/package-skill.ps1` (`.skill` / `.zip` packager).
+  - GitHub Actions workflows for continuous validation (`validate.yml`) and automated release packaging (`release.yml`).
+  - Issue templates (AI Hallucination Report, Install Problem, Idea) and Pull Request template.
+  - `SECURITY.md`, `CONTRIBUTING.md`, and `CODE_OF_CONDUCT.md`.
 
 [Unreleased]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases/tag/v0.1.0

@@ -1,67 +1,65 @@
 # Contributing to denvora-ai-skills
 
-Thanks for helping! This project gets better mostly through **real cases**: moments where an AI still guessed, over-claimed, or confused a beginner. You do not need to be an expert to help.
+Thank you for your interest in contributing! **denvora-ai-skills** improves primarily through **real-world cases**—moments where an AI coding assistant invented an API, skipped verification, or behaved in a way that confused a developer or beginner.
 
-Kamu boleh menulis issue atau PR dalam Bahasa Indonesia atau English.
+*(Anda dapat menulis Issue atau Pull Request dalam Bahasa Indonesia maupun Bahasa Inggris.)*
 
-## Ways to help
+## Ways to Contribute
 
-| Effort | What you can do |
+| Time Needed | How You Can Help |
 |---|---|
-| 2 minutes | Star the repo, or report a case with the ["AI still hallucinated" issue template](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=hallucination-report.yml) |
-| 15 minutes | Run a few cases from [tests/test-cases.md](tests/test-cases.md) and share your results |
-| 1 hour | Propose a new rule or example, translate prompt templates, or add a stack reference |
+| **2 minutes** | Star the repo or submit an [AI Hallucination / Inaccuracy Report](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=hallucination-report.yml) when an AI makes an unverified claim or invents code |
+| **15 minutes** | Run a few benchmark prompts from [`tests/test-cases.md`](tests/test-cases.md) on your preferred AI agent and share the results |
+| **1 hour** | Propose a sharper rule or example, improve documentation, or add a framework-specific reference guide |
 
-Look for issues labeled **good first issue** if you want somewhere to start.
+Look for issues labeled **`good first issue`** if you want a clear place to start.
 
-## Project layout
+## Repository Structure
 
-```
+```text
 skills/denvora-ai-skills/
-  SKILL.md            <- the core rules (keep it short)
-  references/         <- detailed guides the AI reads only when needed
-tests/                <- prompt-based test cases, scoring rubric, results
-scripts/              <- validate and package the skill
-docs/                 <- install guide, supported agents
+  SKILL.md            <- Core rules (kept compact to save context window tokens)
+  references/         <- Detailed guides loaded by the AI on demand
+tests/                <- 15 benchmark test prompts, scoring rubric, and results template
+scripts/              <- Maintainer scripts to validate and package the skill
+docs/                 <- Installation guide, supported agents table, and prompt templates
 ```
 
-## Principles for changes
+## Design Principles for Changes
 
-1. **Every rule should come from a real failure.** Link the issue or describe the case in your PR.
-2. **Keep `SKILL.md` short.** It is loaded into the AI's context each time the skill triggers. Put detail and long examples in `references/` and link to them.
-3. **Do not make small tasks slow.** A rule that adds questions or long reports to a one-line fix is a regression. Check case S1 in the test suite.
-4. **No invented claims.** Docs and READMEs must not include statistics or "tested on X" claims unless there is a result file in `tests/results/` backing it up.
-5. **Write for beginners.** Plain words, short sentences.
+1. **Every rule must solve a real failure.** Link the issue or describe the real AI failure case in your Pull Request.
+2. **Keep `SKILL.md` concise.** `SKILL.md` is loaded into the AI's context whenever the skill activates. Keep the core file tight and place detailed checklists or examples in `references/`.
+3. **Never compromise user project safety.** Every rule should protect the user's codebase from unrequested changes, leftover debug clutter, or destructive commands.
+4. **Keep small tasks fast.** A rule that forces a 10-step plan on a one-line variable rename is a regression (test against case `S1` in [`tests/test-cases.md`](tests/test-cases.md)).
+5. **No unverified claims.** Never add statistics or benchmark numbers to the documentation unless backed by a recorded test run in `tests/results/`.
+6. **Write clearly for beginners.** Use plain, direct language.
 
-## Making a change
+## Submitting a Pull Request
 
-1. Fork the repo and create a branch: `git checkout -b fix/short-description`
-2. Edit the skill or docs.
-3. Validate:
-
+1. Fork the repository and create a branch:
+   ```bash
+   git checkout -b feat/short-description
+   ```
+2. Make your changes in `skills/denvora-ai-skills/` or `docs/`.
+3. Run the validator script to check frontmatter, character limits, and links:
    ```bash
    python scripts/validate-skill.py
    ```
+4. Test your change on at least one AI coding assistant using relevant cases from [`tests/test-cases.md`](tests/test-cases.md).
+5. Add an entry under **[Unreleased]** in [`CHANGELOG.md`](CHANGELOG.md) if your change affects users.
+6. Open a Pull Request using the PR template.
 
-4. Test your change on at least one agent with the relevant cases from `tests/test-cases.md`. Say in the PR which agent and model you used.
-5. Add a line under **Unreleased** in [CHANGELOG.md](CHANGELOG.md) if the change affects users.
-6. Open a pull request using the template.
+## Commit Message Style
 
-## Commit messages
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-We use short [Conventional Commits](https://www.conventionalcommits.org/) style prefixes:
+- `feat(skill):` new rule or reference guide
+- `fix(skill):` refinement to an existing rule
+- `docs:` documentation updates
+- `test:` benchmark test cases or recorded results
+- `build:` / `ci:` packaging scripts and GitHub Actions workflows
+- `chore:` maintenance and repository configuration
 
-- `feat(skill):` new rule or reference
-- `fix(skill):` correct a rule that misbehaved
-- `docs:` README and guides
-- `test:` test cases or results
-- `build:` / `ci:` scripts and workflows
-- `chore:` everything else
+## Code of Conduct
 
-## Adding a stack reference (v1.x)
-
-Stack-specific guides (Next.js, Laravel, Flutter, FastAPI, ...) go in `skills/denvora-ai-skills/references/stacks/<stack>.md`. Focus on what AIs commonly get wrong for that stack: version differences, invented config keys, outdated patterns. Link it from `SKILL.md` with one line saying when to read it.
-
-## Code of conduct
-
-Be kind and patient, especially with beginners. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+Please be respectful, patient, and welcoming—especially toward beginners. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
