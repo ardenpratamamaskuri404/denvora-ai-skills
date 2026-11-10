@@ -1,0 +1,33 @@
+{
+  "name": "denvora-ai-skills",
+  "version": "0.1.0",
+  "description": "Universal Agent Skill for AI coding assistants (Claude Code, OpenCode, Cursor, Windsurf, Copilot, Antigravity, and chat AIs).",
+  "keywords": [
+    "agent-skills",
+    "skills",
+    "antigravity",
+    "claude",
+    "claude-code",
+    "opencode",
+    "cursor",
+    "windsurf",
+    "vibe-coding",
+    "ai-coding"
+  ],
+  "author": "Arden Pratama Maskuri <ardenpratamam2008@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/ardenpratamamaskuri404/denvora-ai-skills#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardenpratamamaskuri404/denvora-ai-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues"
+  },
+  "files": [
+    "skills",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ]
+}
