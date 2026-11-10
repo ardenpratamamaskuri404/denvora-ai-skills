@@ -1,5 +1,8 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
-  - name: Questions and discussion
-    url: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/discussions
-    about: Ask questions or share how you use the skill.
+  - name: Installation & Usage Guide
+    url: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/blob/main/docs/installation.md
+    about: Step-by-step installation instructions for Claude Code, OpenCode, Cursor, Windsurf, Copilot, Antigravity, and other AI tools.
+  - name: Ready-to-Use Prompt Templates (EN / ID)
+    url: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/blob/main/docs/prompt-templates.md
+    about: Copy-paste prompts for building features, debugging errors, and verifying code.

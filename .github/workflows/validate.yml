@@ -2,7 +2,7 @@ name: Validate skill
 
 on:
   push:
-    branches: [main]
+    branches: [main, "feat/**", "fix/**"]
   pull_request:
 
 permissions:
