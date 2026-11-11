@@ -80,10 +80,17 @@ npx skills add ardenpratamamaskuri404/denvora-ai-skills --all
 ### Update or uninstall
 
 ```bash
+# Update installed skills
 npx skills update denvora-ai-skills
+
+# Remove from current project or global scope
 npx skills remove denvora-ai-skills
 npx skills remove denvora-ai-skills -g
 ```
+
+- **Installed via Manual Copy?** Delete the `denvora-ai-skills/` folder from the project or global directory listed in Option 2 below, then start a new AI session.
+- **Installed via `CLAUDE.md` / `AGENTS.md` / `.cursorrules`?** Remove the pointer line from your rules file and delete the copied `denvora-ai-skills/` folder.
+- **Installed via Claude Desktop / Web?** Toggle it off or remove it under **Settings → Skills**.
 
 ---
 
@@ -151,6 +158,7 @@ If you use a browser chat or app builder that does not have a skills directory:
 - **If the AI can read files in your workspace:** drop `skills/denvora-ai-skills/` into your project and send:
   ```text
   Read skills/denvora-ai-skills/SKILL.md and follow its rules for this entire session.
+  Read the reference files it links to when they are relevant.
   ```
 - **If using a plain chat window:** copy the contents of [`skills/denvora-ai-skills/SKILL.md`](../skills/denvora-ai-skills/SKILL.md) into your custom instructions or paste it at the start of the conversation.
 

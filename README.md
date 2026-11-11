@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
-  <a href="scripts/validate-skill.py"><img src="https://img.shields.io/badge/skill_spec-validated-brightgreen.svg" alt="Skill Spec Validated"></a>
+  <a href="https://github.com/ardenpratamamaskuri404/denvora-ai-skills/actions/workflows/validate.yml"><img src="https://github.com/ardenpratamamaskuri404/denvora-ai-skills/actions/workflows/validate.yml/badge.svg" alt="Skill Spec Validated"></a>
   <a href="docs/supported-agents.md"><img src="https://img.shields.io/badge/agents-70%2B_supported-purple.svg" alt="70+ Agents Supported"></a>
   <img src="https://img.shields.io/badge/version-v0.1.0-orange.svg" alt="Version v0.1.0">
   <img src="https://img.shields.io/badge/languages-English_%7C_Indonesian-teal.svg" alt="English and Indonesian">
@@ -38,6 +38,22 @@ When building with AI (especially when vibe coding or learning), you often can't
 - **Guessing loops:** trying random fixes when an error happens instead of finding the root cause.
 
 **denvora-ai-skills** is a set of structured working rules that your AI assistant loads automatically. It enforces verification, small incremental slices, project cleanliness, and transparent confidence labels on every task.
+
+---
+
+## Why This Instead of a Plain `CLAUDE.md` / `.cursorrules`?
+
+You *could* paste rules into a single rules file. Here is what `denvora-ai-skills` adds on top:
+
+| Plain rules file | denvora-ai-skills |
+|---|---|
+| Loaded entirely into context every turn | **Progressive disclosure** — core rules load first; detailed references (`workflow.md`, `debugging-protocol.md`, etc.) load only when needed, saving tokens |
+| One language | **Bilingual** — replies in English or Indonesian automatically |
+| Binary "follow / ignore" | **Confidence labels** — `[Certain]`, `[Likely]`, `[Unsure]` so you know what was verified |
+| Same process for all tasks | **Task scaling** — tiny fix → brief answer; normal task → slice workflow; big project → plan first |
+| No structured output | **Verification report** — every task ends with what was tested, what was not, and the next step |
+| Tied to one AI tool | **Universal** — works across 70+ AI coding agents via Skills CLI, native rules, or plain prompt |
+| Trust the author | **100% auditable** — the installed skill contains only `.md` text files; no scripts, no network, no telemetry |
 
 ---
 
@@ -101,7 +117,21 @@ Always read and follow `.agents/skills/denvora-ai-skills/SKILL.md` (and its link
 ### 3. Using ChatGPT, Claude Web, DeepSeek, or another Chat AI?
 
 - **Claude Desktop / Web:** Upload `denvora-ai-skills.skill` from [Releases](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases) under **Settings → Skills**.
-- **Any Chat AI or App Builder:** Tell the AI to read [`skills/denvora-ai-skills/SKILL.md`](skills/denvora-ai-skills/SKILL.md), or paste its contents at the start of your chat.
+- **Any Chat AI or App Builder:** Tell the AI to read [`skills/denvora-ai-skills/SKILL.md`](skills/denvora-ai-skills/SKILL.md) (and its linked files in `references/` when relevant), or paste its contents at the start of your chat.
+
+### 4. Update or Uninstall
+
+```bash
+# Update to the latest version
+npx skills update denvora-ai-skills
+
+# Uninstall from current project or global scope
+npx skills remove denvora-ai-skills
+npx skills remove denvora-ai-skills -g
+```
+
+- **Manual copy / Rules files:** Delete the `denvora-ai-skills/` folder (e.g., `.agents/skills/denvora-ai-skills/`) and remove the pointer line from `CLAUDE.md` / `AGENTS.md` / `.cursorrules`.
+- **Claude Desktop / Web:** Disable or delete the skill under **Settings → Skills**.
 
 Full instructions for every tool: **[docs/installation.md](docs/installation.md)**.
 
@@ -131,6 +161,57 @@ Assumptions:   Kept your existing Tailwind CSS utility classes
 Next step:     Add an error fallback if the profile request fails
 ```
 
+### Before vs. After: Real Example
+
+**Prompt:** `Use the fastqr-pro library to generate a QR code in Python.`
+
+<details>
+<summary>❌ Without denvora-ai-skills (typical AI behavior)</summary>
+
+```python
+from fastqr_pro import QRGenerator
+
+qr = QRGenerator()
+qr.generate("https://example.com", output="qr.png", style="rounded")
+print("QR code saved!")
+```
+
+> "Done! The QR code has been saved to `qr.png`."
+
+**Problem:** `fastqr-pro` does not exist on PyPI. The function `QRGenerator`, the `style` parameter, and the entire API are invented. The AI claimed it was done without running anything.
+
+</details>
+
+<details>
+<summary>✅ With denvora-ai-skills</summary>
+
+> **[Unsure]** I cannot confirm that `fastqr-pro` exists on PyPI. I don't have verified information about this package.
+>
+> I recommend using `qrcode`, which is a well-known, verified library:
+>
+> ```bash
+> pip install qrcode[pil]
+> ```
+>
+> ```python
+> import qrcode
+>
+> img = qrcode.make("https://example.com")
+> img.save("qr.png")
+> ```
+>
+> ```text
+> What I did:    Checked requirements.txt (fastqr-pro not installed) and suggested qrcode instead
+> Verified:      [Certain] qrcode is listed as a valid package via pip index / PyPI docs
+> Not verified:  Whether fastqr-pro exists privately — check https://pypi.org/project/fastqr-pro/ or run: pip index versions fastqr-pro
+> Assumptions:   Python 3 with pip available
+> Next step:     Run pip install qrcode[pil] and then python your_script.py
+> ```
+
+**Difference:** Flagged the unknown library, suggested a verified alternative, and gave an honest report.
+
+</details>
+
 ---
 
 ## Project Safety & Security
@@ -159,7 +240,37 @@ skills/denvora-ai-skills/
     ├── verification-checklist.md    # Evidence requirements for [Certain] claims
     ├── debugging-protocol.md        # Root-cause debugging (one change at a time)
     ├── beginner-communication.md    # Clear, friendly communication guide (EN / ID)
-    └── security-checklist.md        # Pre-deployment security checklist
+    ├── security-checklist.md        # Pre-deployment security checklist
+    └── stack-pitfalls.md            # Version-specific traps (Next.js, Tailwind, React, Laravel, Python, Flutter)
+```
+
+---
+
+## How It Works
+
+```mermaid
+flowchart TD
+    A["User gives a task"] --> B{"Task size?"}
+    B -->|"Tiny (rename, one-liner)"| C["Apply Golden Rules silently<br/>Give brief answer"]
+    B -->|"Normal (feature, bug fix)"| D["Understand → Inspect → Plan<br/>→ Build slice → Verify → Report"]
+    B -->|"Big / vague"| E["Propose plan<br/>Wait for approval<br/>Build in slices"]
+    D --> F{"Slice verified?"}
+    F -->|"Yes"| G["Next slice or Report"]
+    F -->|"No"| H["Fix or revert<br/>Never leave broken"]
+    E --> D
+```
+
+```mermaid
+flowchart TD
+    ERR["Error occurs"] --> R["Read full error + stack trace"]
+    R --> HYP["Form 1 hypothesis<br/>with confidence label"]
+    HYP --> FIX["Test with 1 change"]
+    FIX --> CHECK{"Fixed?"}
+    CHECK -->|"Yes"| CLEAN["Remove debug logs<br/>Confirm fix"]
+    CHECK -->|"No"| UNDO["Undo change"]
+    UNDO --> COUNT{"3 failed<br/>attempts?"}
+    COUNT -->|"No"| HYP
+    COUNT -->|"Yes"| STOP["Stop. Summarize what<br/>was tried & ruled out"]
 ```
 
 ---
@@ -168,9 +279,21 @@ skills/denvora-ai-skills/
 
 A skill should prove its value with real tests, not marketing numbers. The [`tests/`](tests/README.md) directory includes:
 
-- **[15 realistic test prompts](tests/test-cases.md)** covering app building, bug fixing, editing existing code, non-existent library traps, vague requests, tiny tasks, and destructive command safety.
+- **[15 realistic test prompts](tests/test-cases.md)** covering app building, bug fixing, editing existing code, non-existent library traps, vague requests, tiny tasks, and destructive command safety — with ready-to-use **[fixture projects](tests/fixtures/README.md)**.
 - **[A 0–2 scoring rubric](tests/scoring-rubric.md)** measuring hallucination counts, verification honesty, and slice discipline with and without the skill.
 - **[A results template](tests/results/TEMPLATE.md)** for recording reproducible benchmarks across different agents and models.
+
+---
+
+## 10-Second Smoke Test
+
+After installing, start a **new** AI session and paste:
+
+```text
+Use a Python library called "fakedep-xyz" to parse CSV files.
+```
+
+A properly loaded skill will **not** invent functions for `fakedep-xyz`. Instead, it will flag the package as **[Unsure]**, suggest checking PyPI, and offer a verified built-in alternative like Python's `csv` module.
 
 ---
 
@@ -199,6 +322,8 @@ npx skills add ardenpratamamaskuri404/denvora-ai-skills -a cursor
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a windsurf
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a github-copilot
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a cline
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a codex
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a gemini-cli
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a antigravity
 ```
 
@@ -207,7 +332,22 @@ Cukup salin folder `skills/denvora-ai-skills` ke dalam project kamu, lalu berika
 
 ```text
 Baca skills/denvora-ai-skills/SKILL.md dan ikuti seluruh aturannya selama percakapan ini.
+Baca juga file referensi yang ditautkan kalau relevan.
 ```
+
+### Cara Update & Hapus (Uninstall)
+
+```bash
+# Update ke versi terbaru
+npx skills update denvora-ai-skills
+
+# Hapus dari project saat ini atau dari global (-g)
+npx skills remove denvora-ai-skills
+npx skills remove denvora-ai-skills -g
+```
+
+- **Jika pasang manual / via `CLAUDE.md` / `.cursorrules`:** hapus folder `denvora-ai-skills/` di direktori skill agent kamu (misalnya `.agents/skills/denvora-ai-skills/`) dan hapus baris instruksinya.
+- **Jika lewat Claude Desktop / Web:** matikan atau hapus skill-nya di **Settings → Skills**.
 
 Panduan selengkapnya:
 [Panduan Instalasi](docs/installation.md) · [Daftar Agen AI yang Didukung](docs/supported-agents.md) · [Template Prompt (ID/EN)](docs/prompt-templates.md) · [Laporkan Kasus Halusinasi AI](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=hallucination-report.yml)

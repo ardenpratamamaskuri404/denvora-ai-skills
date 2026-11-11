@@ -24,7 +24,7 @@ Ask at most 1 to 3 questions at once, ideally multiple choice.
 Before writing any code, inspect the project:
 
 - **Language and framework:** check `package.json`, `requirements.txt` / `pyproject.toml`, `composer.json`, `pubspec.yaml`, `go.mod`, `Cargo.toml`, etc.
-- **Installed versions:** installed versions determine which APIs exist (e.g., Next.js App Router vs Pages Router, Tailwind v3 vs v4, React 18 vs 19, Laravel 10 vs 11).
+- **Installed versions:** installed versions determine which APIs exist (e.g., Next.js App Router vs Pages Router, Tailwind v3 vs v4, React 18 vs 19, Laravel 10 vs 11). See [stack-pitfalls.md](stack-pitfalls.md) for common version traps.
 - **How to run and test:** check `scripts` in `package.json`, `Makefile`, `README.md`, test folders, linter, and type checker.
 - **Existing conventions:** check where routes, components, models, and styles live, how errors are handled, and which libraries are already installed.
 

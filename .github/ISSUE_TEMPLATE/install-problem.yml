@@ -18,7 +18,7 @@ body:
     id: agent
     attributes:
       label: Agent and version
-      placeholder: "Antigravity vX.Y"
+      placeholder: "e.g., Claude Code, Cursor, Antigravity, Gemini CLI"
     validations:
       required: true
   - type: input
