@@ -27,7 +27,7 @@ Do not explain the same term again in the same conversation.
 | "Install the dependencies" | "In the terminal, inside your project folder, run `npm install`" |
 | "Check the logs" | "Look at the terminal where `npm run dev` is running and copy any red text" |
 
-Always give commands in a copyable code block.
+Always give commands in a copyable code block, and match the user's OS and shell (for example, PowerShell on Windows vs `bash`/`zsh` on macOS/Linux — avoid giving `export` or `rm -rf` to Windows users without the PowerShell equivalent).
 
 ## Keep it short
 

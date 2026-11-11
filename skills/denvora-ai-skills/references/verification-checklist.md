@@ -18,7 +18,9 @@ Otherwise, label it **[Likely]** (**[Kemungkinan]**) or **[Unsure]** (**[Belum y
 - [ ] Every function, method, prop, and CLI flag exists in the installed version
 - [ ] Unrelated files were **not** modified, moved, or reformatted
 - [ ] No temporary debug logs (`console.log`, `print`, `dd`), scratch scripts, or `.bak` files are left behind
-- [ ] The strongest available check was run (tests, build, type-check, run, or lint) and its output was inspected
+- [ ] No real logic was silently replaced with hardcoded mock data, skipped tests (`.skip`/`xit`), or weakened assertions
+- [ ] The strongest available check was run **after the final edit** (tests, build, type-check, run, or lint) and its output was inspected
+- [ ] Static build/type-check is not confused with runtime verification (compilation passing does not prove UI/API behavior works)
 - [ ] Existing tests and build still pass
 
 ## Before claiming a bug is fixed
