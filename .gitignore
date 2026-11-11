@@ -16,3 +16,8 @@ desktop.ini
 /dist/
 *.skill
 node_modules/
+
+# Test fixture dependencies / caches
+tests/fixtures/*/node_modules/
+__pycache__/
+*.pyc
