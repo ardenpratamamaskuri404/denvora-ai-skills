@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **Ready-to-Use Benchmark Fixtures (`tests/fixtures/`):**
   - Minimal reproducible projects (`react-null-user/`, `express-todo/`, `python-empty/`) linked from `tests/test-cases.md`.
 - **README & CI Enhancements:**
-  - Added live GitHub Actions badge, "Why This Instead of a Plain Rules File?" comparison, real Before vs. After demo, Mermaid workflow/debugging diagrams, and a 10-second smoke test.
+  - Added live GitHub Actions badge, "Why This Instead of a Plain Rules File?" comparison, real Before vs. After demo, Mermaid workflow/debugging diagrams, Update & Uninstall instructions (EN/ID), and a 10-second smoke test.
   - Updated `scripts/validate-skill.py` to support multiline YAML frontmatter (`>-`/`|`), enforce Markdown-only files inside `skills/`, warn on high word count, and validate links across root docs, `docs/`, and `tests/`.
   - Updated `package.json` with `private: true` and maintainer `scripts` (plus cross-platform `scripts/run-validate.mjs` wrapper), and generalized `.github/ISSUE_TEMPLATE/install-problem.yml` for all supported agents.
 

@@ -117,7 +117,21 @@ Always read and follow `.agents/skills/denvora-ai-skills/SKILL.md` (and its link
 ### 3. Using ChatGPT, Claude Web, DeepSeek, or another Chat AI?
 
 - **Claude Desktop / Web:** Upload `denvora-ai-skills.skill` from [Releases](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases) under **Settings → Skills**.
-- **Any Chat AI or App Builder:** Tell the AI to read [`skills/denvora-ai-skills/SKILL.md`](skills/denvora-ai-skills/SKILL.md), or paste its contents at the start of your chat.
+- **Any Chat AI or App Builder:** Tell the AI to read [`skills/denvora-ai-skills/SKILL.md`](skills/denvora-ai-skills/SKILL.md) (and its linked files in `references/` when relevant), or paste its contents at the start of your chat.
+
+### 4. Update or Uninstall
+
+```bash
+# Update to the latest version
+npx skills update denvora-ai-skills
+
+# Uninstall from current project or global scope
+npx skills remove denvora-ai-skills
+npx skills remove denvora-ai-skills -g
+```
+
+- **Manual copy / Rules files:** Delete the `denvora-ai-skills/` folder (e.g., `.agents/skills/denvora-ai-skills/`) and remove the pointer line from `CLAUDE.md` / `AGENTS.md` / `.cursorrules`.
+- **Claude Desktop / Web:** Disable or delete the skill under **Settings → Skills**.
 
 Full instructions for every tool: **[docs/installation.md](docs/installation.md)**.
 
@@ -320,6 +334,20 @@ Cukup salin folder `skills/denvora-ai-skills` ke dalam project kamu, lalu berika
 Baca skills/denvora-ai-skills/SKILL.md dan ikuti seluruh aturannya selama percakapan ini.
 Baca juga file referensi yang ditautkan kalau relevan.
 ```
+
+### Cara Update & Hapus (Uninstall)
+
+```bash
+# Update ke versi terbaru
+npx skills update denvora-ai-skills
+
+# Hapus dari project saat ini atau dari global (-g)
+npx skills remove denvora-ai-skills
+npx skills remove denvora-ai-skills -g
+```
+
+- **Jika pasang manual / via `CLAUDE.md` / `.cursorrules`:** hapus folder `denvora-ai-skills/` di direktori skill agent kamu (misalnya `.agents/skills/denvora-ai-skills/`) dan hapus baris instruksinya.
+- **Jika lewat Claude Desktop / Web:** matikan atau hapus skill-nya di **Settings → Skills**.
 
 Panduan selengkapnya:
 [Panduan Instalasi](docs/installation.md) · [Daftar Agen AI yang Didukung](docs/supported-agents.md) · [Template Prompt (ID/EN)](docs/prompt-templates.md) · [Laporkan Kasus Halusinasi AI](https://github.com/ardenpratamamaskuri404/denvora-ai-skills/issues/new?template=hallucination-report.yml)
