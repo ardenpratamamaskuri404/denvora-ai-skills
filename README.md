@@ -248,30 +248,9 @@ skills/denvora-ai-skills/
 
 ## How It Works
 
-```mermaid
-flowchart TD
-    A["User gives a task"] --> B{"Task size?"}
-    B -->|"Tiny (rename, one-liner)"| C["Apply Golden Rules silently<br/>Give brief answer"]
-    B -->|"Normal (feature, bug fix)"| D["Understand → Inspect → Plan<br/>→ Build slice → Verify → Report"]
-    B -->|"Big / vague"| E["Propose plan<br/>Wait for approval<br/>Build in slices"]
-    D --> F{"Slice verified?"}
-    F -->|"Yes"| G["Next slice or Report"]
-    F -->|"No"| H["Fix or revert<br/>Never leave broken"]
-    E --> D
-```
-
-```mermaid
-flowchart TD
-    ERR["Error occurs"] --> R["Read full error + stack trace"]
-    R --> HYP["Form 1 hypothesis<br/>with confidence label"]
-    HYP --> FIX["Test with 1 change"]
-    FIX --> CHECK{"Fixed?"}
-    CHECK -->|"Yes"| CLEAN["Remove debug logs<br/>Confirm fix"]
-    CHECK -->|"No"| UNDO["Undo change"]
-    UNDO --> COUNT{"3 failed<br/>attempts?"}
-    COUNT -->|"No"| HYP
-    COUNT -->|"Yes"| STOP["Stop. Summarize what<br/>was tried & ruled out"]
-```
+<p align="center">
+  <img src="assets/denvora-workflow.png" alt="How denvora-ai-skills works: Inspect, Plan, Slice & Verify, Honest Report, and the 3-attempt debugging loop" width="100%">
+</p>
 
 ---
 
