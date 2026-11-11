@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-11
+
 ### Added
 
 - **Stronger Core Guardrails (`SKILL.md`):**
@@ -50,5 +52,6 @@ Initial public draft of **denvora-ai-skills**.
   - Issue templates (AI Hallucination Report, Install Problem, Idea) and Pull Request template.
   - `SECURITY.md`, `CONTRIBUTING.md`, and `CODE_OF_CONDUCT.md`.
 
-[Unreleased]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases/tag/v0.2.0
 [0.1.0]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases/tag/v0.1.0

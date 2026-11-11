@@ -1,6 +1,6 @@
 {
   "name": "denvora-ai-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Universal Agent Skill for AI coding assistants (Claude Code, OpenCode, Cursor, Windsurf, Copilot, Antigravity, and chat AIs).",
   "scripts": {

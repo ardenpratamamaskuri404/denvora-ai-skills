@@ -11,7 +11,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href="https://github.com/ardenpratamamaskuri404/denvora-ai-skills/actions/workflows/validate.yml"><img src="https://github.com/ardenpratamamaskuri404/denvora-ai-skills/actions/workflows/validate.yml/badge.svg" alt="Skill Spec Validated"></a>
   <a href="docs/supported-agents.md"><img src="https://img.shields.io/badge/agents-70%2B_supported-purple.svg" alt="70+ Agents Supported"></a>
-  <img src="https://img.shields.io/badge/version-v0.1.0-orange.svg" alt="Version v0.1.0">
+  <img src="https://img.shields.io/badge/version-v0.2.0-orange.svg" alt="Version v0.2.0">
   <img src="https://img.shields.io/badge/languages-English_%7C_Indonesian-teal.svg" alt="English and Indonesian">
 </p>
 
