@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **Stronger Core Guardrails (`SKILL.md`):**
+  - Golden Rules #10–13 covering no silent hardcoded mocks or weakened/skipped tests, checking local installed sources (`node_modules/`, `.d.ts`, `site-packages/`, `vendor/`), matching the user's OS and shell (Windows PowerShell vs Unix bash/zsh), and never echoing `.env` secrets or running unverified remote scripts.
+  - Anti-rationalization table (`Common excuses — do not fall for these`) and re-verification reminder after final cleanup edits.
+  - Bilingual report template with Indonesian labels (`Yang saya kerjakan:`, `Sudah dicek:`, `Belum dicek:`, `Asumsi:`, `Langkah berikutnya:`).
+- **Stack Version Pitfalls Reference (`skills/denvora-ai-skills/references/stack-pitfalls.md`):**
+  - On-demand version trap guide for Next.js (13/14 vs 15+), Tailwind CSS (v3 vs v4), React (17/18/19), Laravel (9/10/11+), Python, and Flutter/Dart.
+- **Ready-to-Use Benchmark Fixtures (`tests/fixtures/`):**
+  - Minimal reproducible projects (`react-null-user/`, `express-todo/`, `python-empty/`) linked from `tests/test-cases.md`.
+- **README & CI Enhancements:**
+  - Added live GitHub Actions badge, "Why This Instead of a Plain Rules File?" comparison, real Before vs. After demo, Mermaid workflow/debugging diagrams, and a 10-second smoke test.
+  - Updated `scripts/validate-skill.py` to support multiline YAML frontmatter (`>-`/`|`), enforce Markdown-only files inside `skills/`, warn on high word count, and validate links across root docs, `docs/`, and `tests/`.
+  - Updated `package.json` with `private: true` and maintainer `scripts` (plus cross-platform `scripts/run-validate.mjs` wrapper), and generalized `.github/ISSUE_TEMPLATE/install-problem.yml` for all supported agents.
+
 ## [0.1.0] - 2026-11-10
 
 Initial public draft of **denvora-ai-skills**.
