@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-13
+
 ### Added
 
 - **PRD & Architecture Blueprint (`skills/denvora-ai-skills/references/prd-blueprint.md`):**
@@ -16,11 +18,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Strict guardrails in `SKILL.md` (Rule #13) and `references/security-checklist.md` forbidding forwarding `.env`, credentials, API keys, or private keys to external tools, auto-redacting credential patterns (`[REDACTED_SECRET]`), and blocking `process.env` dumps.
 - **Kiro Agentic IDE & CLI Support:**
   - Added official support and documentation for Kiro across `README.md`, `docs/installation.md` (`-a kiro`, `.kiro/skills/`, `.kiro/steering/`), and `docs/supported-agents.md`.
-
-## [0.2.0] - 2026-11-11
-
-### Added
-
 - **Stronger Core Guardrails (`SKILL.md`):**
   - Golden Rules #10–13 covering no silent hardcoded mocks or weakened/skipped tests, checking local installed sources (`node_modules/`, `.d.ts`, `site-packages/`, `vendor/`), matching the user's OS and shell (Windows PowerShell vs Unix bash/zsh), and never echoing `.env` secrets or running unverified remote scripts.
   - Anti-rationalization table (`Common excuses — do not fall for these`) and re-verification reminder after final cleanup edits.
