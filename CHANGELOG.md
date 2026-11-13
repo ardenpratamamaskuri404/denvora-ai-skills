@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-## [0.2.0] - 2026-11-13
+## [0.2.1] - 2026-11-13
 
 ### Added
 
@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Strict guardrails in `SKILL.md` (Rule #13) and `references/security-checklist.md` forbidding forwarding `.env`, credentials, API keys, or private keys to external tools, auto-redacting credential patterns (`[REDACTED_SECRET]`), and blocking `process.env` dumps.
 - **Kiro Agentic IDE & CLI Support:**
   - Added official support and documentation for Kiro across `README.md`, `docs/installation.md` (`-a kiro`, `.kiro/skills/`, `.kiro/steering/`), and `docs/supported-agents.md`.
+
+## [0.2.0] - 2026-11-11
+
+### Added
+
 - **Stronger Core Guardrails (`SKILL.md`):**
   - Golden Rules #10–13 covering no silent hardcoded mocks or weakened/skipped tests, checking local installed sources (`node_modules/`, `.d.ts`, `site-packages/`, `vendor/`), matching the user's OS and shell (Windows PowerShell vs Unix bash/zsh), and never echoing `.env` secrets or running unverified remote scripts.
   - Anti-rationalization table (`Common excuses — do not fall for these`) and re-verification reminder after final cleanup edits.
@@ -60,6 +65,7 @@ Initial public draft of **denvora-ai-skills**.
   - Issue templates (AI Hallucination Report, Install Problem, Idea) and Pull Request template.
   - `SECURITY.md`, `CONTRIBUTING.md`, and `CODE_OF_CONDUCT.md`.
 
-[Unreleased]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases/tag/v0.2.0
 [0.1.0]: https://github.com/ardenpratamamaskuri404/denvora-ai-skills/releases/tag/v0.1.0

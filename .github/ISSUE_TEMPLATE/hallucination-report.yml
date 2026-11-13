@@ -23,7 +23,7 @@ body:
     attributes:
       label: Skill Version
       description: Release tag or commit hash, if known.
-      placeholder: "v0.2.0"
+      placeholder: "v0.2.1"
   - type: dropdown
     id: category
     attributes:
