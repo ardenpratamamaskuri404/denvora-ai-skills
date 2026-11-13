@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **PRD & Architecture Blueprint (`skills/denvora-ai-skills/references/prd-blueprint.md`):**
+  - Standardized blueprint format for new apps and large feature planning (Overview, Core Scope vs Non-Goals, Data Models, Slice Decomposition, Acceptance Criteria) supporting Spec-Driven Development (SDD) in English and Indonesian.
+- **Tool & External Reference Orchestration (`skills/denvora-ai-skills/references/tool-orchestration.md`):**
+  - Universal protocol defining how AI coding agents safely coordinate external tools, documentation lookups, and codebase AST indexing without hallucinating APIs or leaking project state.
+- **Secret & Privacy Protection Shield:**
+  - Strict guardrails in `SKILL.md` (Rule #13) and `references/security-checklist.md` forbidding forwarding `.env`, credentials, API keys, or private keys to external tools, auto-redacting credential patterns (`[REDACTED_SECRET]`), and blocking `process.env` dumps.
+- **Kiro Agentic IDE & CLI Support:**
+  - Added official support and documentation for Kiro across `README.md`, `docs/installation.md` (`-a kiro`, `.kiro/skills/`, `.kiro/steering/`), and `docs/supported-agents.md`.
+
 ## [0.2.0] - 2026-11-11
 
 ### Added
