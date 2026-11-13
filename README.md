@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>Make any AI coding assistant careful, honest, and safe for your project.</strong><br>
-  A universal open-source Agent Skill for Claude Code, OpenCode, Cursor, Windsurf, GitHub Copilot, Cline, Codex, Gemini CLI, Google Antigravity, and any chat AI.
+  A universal open-source Agent Skill for Claude Code, Kiro, OpenCode, Cursor, Windsurf, GitHub Copilot, Cline, Codex, Gemini CLI, Google Antigravity, and any chat AI.
 </p>
 
 <p align="center">
@@ -77,6 +77,9 @@ Or target your preferred AI coding assistant directly:
 # Claude Code
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a claude-code
 
+# Kiro (IDE & CLI)
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a kiro
+
 # OpenCode
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a opencode
 
@@ -106,9 +109,9 @@ npx skills add ardenpratamamaskuri404/denvora-ai-skills --all
 
 *(Add `-g` to any command above to install globally instead of only in the current project.)*
 
-### 2. Using `CLAUDE.md`, `AGENTS.md`, or `.cursorrules`?
+### 2. Using `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or Kiro Steering?
 
-If you prefer native rule files, copy `skills/denvora-ai-skills` into your project (or `.agents/skills/denvora-ai-skills/`) and add this line to your `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or `.windsurfrules`:
+If you prefer native rule files, copy `skills/denvora-ai-skills` into your project (e.g., `.agents/skills/denvora-ai-skills/` or `.kiro/skills/denvora-ai-skills/`) and add this line to your `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, `.windsurfrules`, or `.kiro/steering/rules.md`:
 
 ```markdown
 Always read and follow `.agents/skills/denvora-ai-skills/SKILL.md` (and its linked files in `references/` when relevant) for all coding, debugging, and verification tasks.
@@ -219,7 +222,12 @@ print("QR code saved!")
 We designed **denvora-ai-skills** so it is completely safe to use on personal, team, and client projects:
 
 1. **100% Plain Markdown:** The skill folder (`skills/denvora-ai-skills/`) contains only `.md` text instructions. There are **no executable scripts**, **no network requests**, **no telemetry**, and **no hidden hooks** inside the skill.
-2. **Non-Destructive by Rule:**
+2. **Secret & Privacy Protection Shield:**
+   - **Zero secret forwarding:** The AI is strictly forbidden from passing `.env`, API keys, passwords, private keys, or tokens into external tools or chat logs.
+   - **Automatic redaction:** Any accidental credential appearance in error traces is masked as `[REDACTED_SECRET]`.
+   - **No environment dumps:** Commands like `printenv` or `process.env` inspection are blocked.
+   - **Local boundary:** All confidential project data and credentials remain exclusively on your local machine.
+3. **Non-Destructive by Rule:**
    - **No unrequested changes:** The AI is instructed to modify *only* the files required for your request and leave unrelated files untouched.
    - **No dependency bloat:** It will not install or upgrade packages without checking existing dependencies and asking first.
    - **No leftover clutter:** Temporary debug logs (`console.log`, `print`), scratch scripts, and failed fix attempts must be cleaned up before finishing.
@@ -237,6 +245,8 @@ skills/denvora-ai-skills/
 ├── SKILL.md                         # Core rules (compact so it uses minimal context tokens)
 └── references/                      # Loaded on demand only when relevant
     ├── workflow.md                  # Understand → Inspect → Plan → Build → Verify → Report
+    ├── prd-blueprint.md             # Spec-Driven Development (SDD) & PRD blueprint for large features
+    ├── tool-orchestration.md        # Safe tool coordination & Secret Shield (no credential leaks)
     ├── verification-checklist.md    # Evidence requirements for [Certain] claims
     ├── debugging-protocol.md        # Root-cause debugging (one change at a time)
     ├── beginner-communication.md    # Clear, friendly communication guide (EN / ID)
@@ -278,7 +288,7 @@ A properly loaded skill will **not** invent functions for `fakedep-xyz`. Instead
 
 ## Bahasa Indonesia
 
-**denvora-ai-skills** adalah *Agent Skill* open-source universal yang membuat asisten coding AI bekerja lebih teliti, jujur, dan aman bagi project kamu. Bisa digunakan di **Claude Code**, **OpenCode**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Roo Code**, **Codex**, **Gemini CLI**, **Google Antigravity**, **Claude Desktop/Web**, maupun AI chat seperti **ChatGPT** dan **DeepSeek**.
+**denvora-ai-skills** adalah *Agent Skill* open-source universal yang membuat asisten coding AI bekerja lebih teliti, jujur, dan aman bagi project kamu. Bisa digunakan di **Claude Code**, **Kiro**, **OpenCode**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Roo Code**, **Codex**, **Gemini CLI**, **Google Antigravity**, **Claude Desktop/Web**, maupun AI chat seperti **ChatGPT** dan **DeepSeek**.
 
 ### Apa manfaat utamanya?
 
@@ -296,6 +306,7 @@ npx skills add ardenpratamamaskuri404/denvora-ai-skills
 
 # Atau pasang langsung ke agent pilihanmu (tambahkan -g untuk global di semua project):
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a claude-code
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a kiro
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a opencode
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a cursor
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a windsurf

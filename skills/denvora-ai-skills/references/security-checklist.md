@@ -4,7 +4,14 @@ Run through this before a web app, API, or bot goes online, or whenever the user
 
 Report each item as done, not applicable, or needs work. Do not claim the app is "secure"; say which items you checked.
 
-## Secrets
+## Secret & Privacy Shield (AI & Tool Safety)
+
+- [ ] **No secret forwarding:** Secrets, API keys, tokens, and `.env` files are never passed to external tools, search tools, or protocol extensions.
+- [ ] **Automatic redaction:** Any credentials appearing in logs or error traces are masked as `[REDACTED_SECRET]`.
+- [ ] **No environment dump:** No commands or scripts execute `printenv`, `process.env`, or dump system variables into chat or files.
+- [ ] **Local privacy boundary:** All proprietary user data and credentials remain strictly on the local machine.
+
+## Secrets in Code & Repository
 
 - [ ] No API keys, passwords, tokens, or database URLs are hard-coded in source files
 - [ ] Secrets live in environment variables (`.env`) and `.env` is in `.gitignore`

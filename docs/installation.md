@@ -1,6 +1,6 @@
 # Installation Guide
 
-**denvora-ai-skills** is a universal Agent Skill. It works with **Claude Code**, **OpenCode**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Roo Code**, **OpenAI Codex**, **Gemini CLI**, **Google Antigravity**, **Continue**, **AiderDesk**, **Claude Desktop/Web**, and **any chat-based AI** (ChatGPT, DeepSeek, Gemini, etc.).
+**denvora-ai-skills** is a universal Agent Skill. It works with **Claude Code**, **Kiro**, **OpenCode**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Roo Code**, **OpenAI Codex**, **Gemini CLI**, **Google Antigravity**, **Continue**, **AiderDesk**, **Claude Desktop/Web**, and **any chat-based AI** (ChatGPT, DeepSeek, Gemini, etc.).
 
 Choose the installation method that matches your setup.
 
@@ -32,6 +32,10 @@ Pass `-a <agent>` for project scope, or add `-g` for global scope:
 # Claude Code
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a claude-code
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a claude-code -g
+
+# Kiro (IDE & CLI)
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a kiro
+npx skills add ardenpratamamaskuri404/denvora-ai-skills -a kiro -g
 
 # OpenCode
 npx skills add ardenpratamamaskuri404/denvora-ai-skills -a opencode
@@ -102,6 +106,7 @@ npx skills remove denvora-ai-skills -g
 | AI Tool | Project Folder | Global Folder |
 |---|---|---|
 | **Claude Code** | `.claude/skills/denvora-ai-skills/` | `~/.claude/skills/denvora-ai-skills/` |
+| **Kiro** | `.kiro/skills/denvora-ai-skills/` | `~/.kiro/skills/denvora-ai-skills/` |
 | **OpenCode** | `.agents/skills/denvora-ai-skills/` | `~/.config/opencode/skills/denvora-ai-skills/` |
 | **Cursor** | `.agents/skills/denvora-ai-skills/` | `~/.cursor/skills/denvora-ai-skills/` |
 | **Windsurf** | `.windsurf/skills/denvora-ai-skills/` | `~/.codeium/windsurf/skills/denvora-ai-skills/` |
@@ -120,12 +125,12 @@ npx skills remove denvora-ai-skills -g
 
 ---
 
-## Option 3: Native Rules Files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`)
+## Option 3: Native Rules & Steering Files (`CLAUDE.md`, `AGENTS.md`, `.cursorrules`, Kiro Steering)
 
-If your workflow uses project rule files such as `AGENTS.md` (OpenCode, Codex, Cursor, Zed), `CLAUDE.md` (Claude Code), `.cursorrules`, `.windsurfrules`, or `.github/copilot-instructions.md`:
+If your workflow uses project rule files such as `AGENTS.md` (OpenCode, Codex, Cursor, Zed), `CLAUDE.md` (Claude Code), `.cursorrules`, `.windsurfrules`, `.github/copilot-instructions.md`, or Kiro Steering (`.kiro/steering/`):
 
-1. Copy the `skills/denvora-ai-skills` folder into `.agents/skills/denvora-ai-skills/` (or anywhere in your project).
-2. Add this single pointer to your `AGENTS.md`, `CLAUDE.md`, or rules file:
+1. Copy the `skills/denvora-ai-skills` folder into `.agents/skills/denvora-ai-skills/`, `.kiro/skills/denvora-ai-skills/`, or anywhere in your project.
+2. Add this single pointer to your `AGENTS.md`, `CLAUDE.md`, rules file, or `.kiro/steering/denvora.md`:
 
 ```markdown
 Always read and follow `.agents/skills/denvora-ai-skills/SKILL.md` (and its linked files in `references/` when relevant) for all coding, debugging, and verification tasks.

@@ -12,6 +12,7 @@ To keep our documentation transparent, we separate two things:
 | AI Assistant / Agent | Skills CLI Flag (`-a`) | Project Directory | Global Directory | Install Path Status | Benchmark Status |
 |---|---|---|---|---|---|
 | **Claude Code** | `claude-code` | `.claude/skills/` | `~/.claude/skills/` | Verified (CLI config) | Pending first run |
+| **Kiro** | `kiro` | `.kiro/skills/` | `~/.kiro/skills/` | Verified (CLI config & steering) | Pending first run |
 | **OpenCode** | `opencode` | `.agents/skills/` | `~/.config/opencode/skills/` | Verified (CLI config) | Pending first run |
 | **Cursor** | `cursor` | `.agents/skills/` | `~/.cursor/skills/` | Verified (CLI config) | Pending first run |
 | **Windsurf** | `windsurf` | `.windsurf/skills/` | `~/.codeium/windsurf/skills/` | Verified (CLI config) | Pending first run |
